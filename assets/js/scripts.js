@@ -16,6 +16,11 @@ jQuery(function($) {
         $('html, body').animate({'scrollTop': 0});
     });
 
+    function loadDuoshuo(){
+        var el = document.getElementsByClassName('ds-thread');
+        DUOSHUO.EmbedThread(el);
+    }
+
     /* ============================================================ */
     /* Ajax Loading */
     /* ============================================================ */
@@ -76,7 +81,7 @@ jQuery(function($) {
                 $ajaxContainer.fadeIn(500);
 
                 NProgress.done();
-
+                loadDuoshuo();
                 loading = false;
                 showIndex = false;
             });
@@ -115,6 +120,7 @@ jQuery(function($) {
                     $latestPost.fadeOut(300, function() {
                         $postIndex.fadeIn(300);
                         NProgress.done();
+                        loadDuoshuo();
                     });
                 } else {
                     $('html, body').animate({'scrollTop': 0});
@@ -124,6 +130,7 @@ jQuery(function($) {
                     $postIndex.fadeOut(300, function() {
                         $latestPost.fadeIn(300);
                         NProgress.done();
+                        loadDuoshuo();
                     });
                 }
             }
